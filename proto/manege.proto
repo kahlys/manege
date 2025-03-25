@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package manege;
+
+option go_package = "github.com/kahlys/manege/internal/proto;proto";
+
+service NotificationService {
+  rpc NotificationStream(NotificationRequest) returns (stream NotificationResponse);
+}
+
+message NotificationRequest {
+  string client_email = 1;
+}
+
+message NotificationResponse {
+  string message = 1;
+}
