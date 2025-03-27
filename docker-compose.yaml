@@ -3,14 +3,27 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.server
+    restart: always
+    depends_on:
+      - database
     ports:
       - "50051:50051"
     command: ["./server"]
+
+  database:
+    image: postgres:17.4
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    expose:
+      - "5432"
 
   client1:
     build:
       context: .
       dockerfile: Dockerfile.client
+    restart: always
     depends_on:
       - server
     command: ["./client", "-email", "user1@ercom.fr"]
@@ -19,6 +32,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.client
+    restart: always
     depends_on:
       - server
     command: ["./client", "-email", "user2@ercom.fr"]
@@ -27,6 +41,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.client
+    restart: always
     depends_on:
       - server
     command: ["./client", "-email", "user3@ercom.fr"]
