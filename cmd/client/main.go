@@ -27,10 +27,12 @@ func main() {
 		os.Exit(1)
 	}
 	defer conn.Close()
-	client := pb.NewNotificationServiceClient(conn)
 
-	req := &pb.NotificationRequest{ClientEmail: *email}
-	stream, err := client.NotificationStream(context.Background(), req)
+	client := pb.NewNotificationServiceClient(conn)
+	stream, err := client.NotificationStream(
+		context.Background(),
+		&pb.NotificationRequest{ClientEmail: *email},
+	)
 	if err != nil {
 		log.Fatalf("could not open stream: %v", err)
 	}

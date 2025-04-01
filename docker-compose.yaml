@@ -8,6 +8,7 @@ services:
       - database
     ports:
       - "50051:50051"
+      - "8080:8080"
     command: ["./server"]
 
   database:

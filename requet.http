@@ -1,0 +1,11 @@
+GET http://localhost:8080/config
+
+###
+
+POST http://localhost:8080/config
+
+{
+    "id" : 1,
+    "name" : "config1",
+    "value" : "value1"
+}
