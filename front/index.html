@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecurityConfig Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+<body>
+  <div class="container">
+    <h2>SecurityConfig Form</h2>
+    <form id="securityConfigForm">
+      <!-- SecurityCodeConfig -->
+      <h3>Security Code Configuration</h3>
+      <label for="minimal_length">Minimal Length</label>
+      <input type="number" id="minimal_length" name="security_code[minimal_length]" required>
+
+      <label for="block_trivial_code">Block Trivial Code</label>
+      <input type="checkbox" id="block_trivial_code" name="security_code[block_trivial_code]">
+
+      <!-- DeviceLockerConfig -->
+      <h3>Device Locker Configuration</h3>
+      <label for="max_lock_timeout">Max Lock Timeout</label>
+      <input type="number" id="max_lock_timeout" name="device_locker[max_lock_timeout]" required>
+
+      <label for="default_lock_timeout">Default Lock Timeout</label>
+      <input type="number" id="default_lock_timeout" name="device_locker[default_lock_timeout]" required>
+
+      <label for="locked_card_message">Locked Card Message</label>
+      <input type="text" id="locked_card_message" name="device_locker[locked_card_message]" required>
+
+      <!-- FirewallConfig -->
+      <h3>Firewall Configuration</h3>
+      <label>
+        <input type="checkbox" name="firewall[block_incoming_clear_call]"> Block Incoming Clear Call
+      </label>
+      <label>
+        <input type="checkbox" name="firewall[block_outgoing_clear_call]"> Block Outgoing Clear Call
+      </label>
+      <label>
+        <input type="checkbox" name="firewall[block_clear_sms]"> Block Clear SMS
+      </label>
+      <label>
+        <input type="checkbox" name="firewall[block_pickup_locked]"> Block Pickup Locked
+      </label>
+      <label for="block_mms">Block MMS</label>
+      <input type="number" id="block_mms" name="firewall[block_mms]">
+      <label for="block_usb">Block USB</label>
+      <input type="number" id="block_usb" name="firewall[block_usb]">
+      <!-- Add more fields for FirewallConfig here -->
+
+      <!-- LocalProtectionConfig -->
+      <h3>Local Protection Configuration</h3>
+      <label for="debugging_policy">Debugging Policy</label>
+      <input type="text" id="debugging_policy" name="local_protection[debugging][policy]" required>
+
+      <label for="wifi_policy">WiFi Policy</label>
+      <input type="text" id="wifi_policy" name="local_protection[wifi_policy][policy]" required>
+
+      <h4>App Control Configuration</h4>
+      <label for="play_store">Play Store Policy</label>
+      <input type="text" id="play_store" name="local_protection[app_control][policy][play_store]" required>
+      <label for="unknown_sources">Unknown Sources Policy</label>
+      <input type="text" id="unknown_sources" name="local_protection[app_control][policy][unknown_sources]" required>
+      <label for="google_mobile_services">Google Mobile Services Policy</label>
+      <input type="text" id="google_mobile_services" name="local_protection[app_control][policy][google_mobile_services]" required>
+
+      <h4>Port Control Configuration</h4>
+      <label for="usb_debug">USB Debug Policy</label>
+      <input type="text" id="usb_debug" name="local_protection[port_control][usb_policy][debug]" required>
+      <label for="usb_tethering">USB Tethering Policy</label>
+      <input type="text" id="usb_tethering" name="local_protection[port_control][usb_policy][tethering]" required>
+      <!-- Add more fields for PortControlConfig here -->
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
